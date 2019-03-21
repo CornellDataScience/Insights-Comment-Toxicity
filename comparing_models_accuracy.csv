@@ -1,0 +1,1 @@
+,Model ,,,,,Category,Gaussian NB,K Nearest Neighbours,Random Forest,Decision Tree,SVM,Logistic Regression tox,0.866,0.9,0.89,0.934,0.87,sev_tox,0.986,0.975,0.99,0.988,0.985,obs,0.92,0.945,0.96,0.972,0.95,threat,0.994,1,0.99,0.996,0.995,insult,0.936,0.94,0.95,0.966,0.92,hate,0.99,0.99,1,0.986,0.995,,,,,,,,,,,,,,,,,,,,,,,,,
