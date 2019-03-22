@@ -1,0 +1,125 @@
+03/21/2019 18:47:50 - INFO - root -   Loading model:
+BertClassifier(bert_model='bert-base-uncased', epochs=3, eval_batch_size=8,
+        fp16=False, gradient_accumulation_steps=1, label_list=None,
+        learning_rate=2e-05, local_rank=-1, logfile='bert_sklearn.log',
+        loss_scale=0, max_seq_length=128, num_mlp_hiddens=500,
+        num_mlp_layers=0, random_state=42, restore_file=None,
+        train_batch_size=32, use_cuda=True, validation_fraction=0.1,
+        warmup_proportion=0.1)
+03/21/2019 18:47:50 - INFO - root -   Loading model:
+BertClassifier(bert_model='bert-base-uncased', epochs=3, eval_batch_size=8,
+        fp16=False, gradient_accumulation_steps=1, label_list=None,
+        learning_rate=2e-05, local_rank=-1, logfile='bert_sklearn.log',
+        loss_scale=0, max_seq_length=128, num_mlp_hiddens=500,
+        num_mlp_layers=0, random_state=42, restore_file=None,
+        train_batch_size=32, use_cuda=True, validation_fraction=0.1,
+        warmup_proportion=0.1)
+03/21/2019 18:47:50 - INFO - root -   Loading model:
+BertClassifier(bert_model='bert-base-uncased', epochs=3, eval_batch_size=8,
+        fp16=False, gradient_accumulation_steps=1, label_list=None,
+        learning_rate=2e-05, local_rank=-1, logfile='bert_sklearn.log',
+        loss_scale=0, max_seq_length=128, num_mlp_hiddens=500,
+        num_mlp_layers=0, random_state=42, restore_file=None,
+        train_batch_size=32, use_cuda=True, validation_fraction=0.1,
+        warmup_proportion=0.1)
+03/21/2019 18:47:50 - INFO - root -   Loading model:
+BertClassifier(bert_model='bert-base-uncased', epochs=3, eval_batch_size=8,
+        fp16=False, gradient_accumulation_steps=1, label_list=None,
+        learning_rate=2e-05, local_rank=-1, logfile='bert_sklearn.log',
+        loss_scale=0, max_seq_length=128, num_mlp_hiddens=500,
+        num_mlp_layers=0, random_state=42, restore_file=None,
+        train_batch_size=32, use_cuda=True, validation_fraction=0.1,
+        warmup_proportion=0.1)
+03/21/2019 18:47:50 - INFO - root -   Loading model:
+BertClassifier(bert_model='bert-base-uncased', epochs=3, eval_batch_size=8,
+        fp16=False, gradient_accumulation_steps=1, label_list=None,
+        learning_rate=2e-05, local_rank=-1, logfile='bert_sklearn.log',
+        loss_scale=0, max_seq_length=128, num_mlp_hiddens=500,
+        num_mlp_layers=0, random_state=42, restore_file=None,
+        train_batch_size=32, use_cuda=True, validation_fraction=0.1,
+        warmup_proportion=0.1)
+03/21/2019 18:47:50 - INFO - root -   Loading model:
+BertClassifier(bert_model='bert-base-uncased', epochs=3, eval_batch_size=8,
+        fp16=False, gradient_accumulation_steps=1, label_list=None,
+        learning_rate=2e-05, local_rank=-1, logfile='bert_sklearn.log',
+        loss_scale=0, max_seq_length=128, num_mlp_hiddens=500,
+        num_mlp_layers=0, random_state=42, restore_file=None,
+        train_batch_size=32, use_cuda=True, validation_fraction=0.1,
+        warmup_proportion=0.1)
+03/21/2019 18:48:29 - INFO - root -   Loading model:
+BertClassifier(bert_model='bert-base-uncased', epochs=3, eval_batch_size=8,
+        fp16=False, gradient_accumulation_steps=1, label_list=None,
+        learning_rate=2e-05, local_rank=-1, logfile='bert_sklearn.log',
+        loss_scale=0, max_seq_length=128, num_mlp_hiddens=500,
+        num_mlp_layers=0, random_state=42, restore_file=None,
+        train_batch_size=32, use_cuda=True, validation_fraction=0.1,
+        warmup_proportion=0.1)
+03/21/2019 18:48:29 - INFO - root -   Loading model:
+BertClassifier(bert_model='bert-base-uncased', epochs=3, eval_batch_size=8,
+        fp16=False, gradient_accumulation_steps=1, label_list=None,
+        learning_rate=2e-05, local_rank=-1, logfile='bert_sklearn.log',
+        loss_scale=0, max_seq_length=128, num_mlp_hiddens=500,
+        num_mlp_layers=0, random_state=42, restore_file=None,
+        train_batch_size=32, use_cuda=True, validation_fraction=0.1,
+        warmup_proportion=0.1)
+03/21/2019 18:48:29 - INFO - root -   Loading model:
+BertClassifier(bert_model='bert-base-uncased', epochs=3, eval_batch_size=8,
+        fp16=False, gradient_accumulation_steps=1, label_list=None,
+        learning_rate=2e-05, local_rank=-1, logfile='bert_sklearn.log',
+        loss_scale=0, max_seq_length=128, num_mlp_hiddens=500,
+        num_mlp_layers=0, random_state=42, restore_file=None,
+        train_batch_size=32, use_cuda=True, validation_fraction=0.1,
+        warmup_proportion=0.1)
+03/21/2019 18:48:29 - INFO - root -   Loading model:
+BertClassifier(bert_model='bert-base-uncased', epochs=3, eval_batch_size=8,
+        fp16=False, gradient_accumulation_steps=1, label_list=None,
+        learning_rate=2e-05, local_rank=-1, logfile='bert_sklearn.log',
+        loss_scale=0, max_seq_length=128, num_mlp_hiddens=500,
+        num_mlp_layers=0, random_state=42, restore_file=None,
+        train_batch_size=32, use_cuda=True, validation_fraction=0.1,
+        warmup_proportion=0.1)
+03/21/2019 18:48:29 - INFO - root -   Loading model:
+BertClassifier(bert_model='bert-base-uncased', epochs=3, eval_batch_size=8,
+        fp16=False, gradient_accumulation_steps=1, label_list=None,
+        learning_rate=2e-05, local_rank=-1, logfile='bert_sklearn.log',
+        loss_scale=0, max_seq_length=128, num_mlp_hiddens=500,
+        num_mlp_layers=0, random_state=42, restore_file=None,
+        train_batch_size=32, use_cuda=True, validation_fraction=0.1,
+        warmup_proportion=0.1)
+03/21/2019 18:48:29 - INFO - root -   Loading model:
+BertClassifier(bert_model='bert-base-uncased', epochs=3, eval_batch_size=8,
+        fp16=False, gradient_accumulation_steps=1, label_list=None,
+        learning_rate=2e-05, local_rank=-1, logfile='bert_sklearn.log',
+        loss_scale=0, max_seq_length=128, num_mlp_hiddens=500,
+        num_mlp_layers=0, random_state=42, restore_file=None,
+        train_batch_size=32, use_cuda=True, validation_fraction=0.1,
+        warmup_proportion=0.1)
+03/21/2019 18:48:32 - INFO - pytorch_pretrained_bert.file_utils -   https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-vocab.txt not found in cache, downloading to /var/folders/66/0pjg5mx573b918cb07h8x2y40000gn/T/tmpdo6wcbpu
+03/21/2019 18:48:33 - INFO - pytorch_pretrained_bert.file_utils -   copying /var/folders/66/0pjg5mx573b918cb07h8x2y40000gn/T/tmpdo6wcbpu to cache at /Users/ruchikadongre/.pytorch_pretrained_bert/26bc1ad6c0ac742e9b52263248f6d0f00068293b33709fae12320c0e35ccfbbb.542ce4285a40d23a559526243235df47c5f75c197f04f37d1a0c124c32c9a084
+03/21/2019 18:48:33 - INFO - pytorch_pretrained_bert.file_utils -   creating metadata file for /Users/ruchikadongre/.pytorch_pretrained_bert/26bc1ad6c0ac742e9b52263248f6d0f00068293b33709fae12320c0e35ccfbbb.542ce4285a40d23a559526243235df47c5f75c197f04f37d1a0c124c32c9a084
+03/21/2019 18:48:33 - INFO - pytorch_pretrained_bert.file_utils -   removing temp file /var/folders/66/0pjg5mx573b918cb07h8x2y40000gn/T/tmpdo6wcbpu
+03/21/2019 18:48:33 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-vocab.txt from cache at /Users/ruchikadongre/.pytorch_pretrained_bert/26bc1ad6c0ac742e9b52263248f6d0f00068293b33709fae12320c0e35ccfbbb.542ce4285a40d23a559526243235df47c5f75c197f04f37d1a0c124c32c9a084
+03/21/2019 18:48:33 - INFO - pytorch_pretrained_bert.file_utils -   https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased.tar.gz not found in cache, downloading to /var/folders/66/0pjg5mx573b918cb07h8x2y40000gn/T/tmppnsrvbcs
+03/21/2019 18:49:03 - INFO - pytorch_pretrained_bert.file_utils -   copying /var/folders/66/0pjg5mx573b918cb07h8x2y40000gn/T/tmppnsrvbcs to cache at /Users/ruchikadongre/.pytorch_pretrained_bert/distributed_-1/9c41111e2de84547a463fd39217199738d1e3deb72d4fec4399e6e241983c6f0.ae3cef932725ca7a30cdcb93fc6e09150a55e2a130ec7af63975a16c153ae2ba
+03/21/2019 18:49:04 - INFO - pytorch_pretrained_bert.file_utils -   creating metadata file for /Users/ruchikadongre/.pytorch_pretrained_bert/distributed_-1/9c41111e2de84547a463fd39217199738d1e3deb72d4fec4399e6e241983c6f0.ae3cef932725ca7a30cdcb93fc6e09150a55e2a130ec7af63975a16c153ae2ba
+03/21/2019 18:49:04 - INFO - pytorch_pretrained_bert.file_utils -   removing temp file /var/folders/66/0pjg5mx573b918cb07h8x2y40000gn/T/tmppnsrvbcs
+03/21/2019 18:49:04 - INFO - pytorch_pretrained_bert.modeling -   loading archive file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased.tar.gz from cache at /Users/ruchikadongre/.pytorch_pretrained_bert/distributed_-1/9c41111e2de84547a463fd39217199738d1e3deb72d4fec4399e6e241983c6f0.ae3cef932725ca7a30cdcb93fc6e09150a55e2a130ec7af63975a16c153ae2ba
+03/21/2019 18:49:04 - INFO - pytorch_pretrained_bert.modeling -   extracting archive file /Users/ruchikadongre/.pytorch_pretrained_bert/distributed_-1/9c41111e2de84547a463fd39217199738d1e3deb72d4fec4399e6e241983c6f0.ae3cef932725ca7a30cdcb93fc6e09150a55e2a130ec7af63975a16c153ae2ba to temp dir /var/folders/66/0pjg5mx573b918cb07h8x2y40000gn/T/tmphhzd9d_o
+03/21/2019 18:49:07 - INFO - pytorch_pretrained_bert.modeling -   Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "max_position_embeddings": 512,
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "type_vocab_size": 2,
+  "vocab_size": 30522
+}
+
+03/21/2019 18:49:09 - INFO - pytorch_pretrained_bert.modeling -   Weights of BertPlusMLP not initialized from pretrained model: ['mlp.weight', 'mlp.bias']
+03/21/2019 18:49:09 - INFO - pytorch_pretrained_bert.modeling -   Weights from pretrained model not used in BertPlusMLP: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+03/21/2019 18:49:09 - INFO - root -   train data size: 1350, validation data size: 150
+03/21/2019 23:18:33 - INFO - root -   Epoch 1, Train loss : 0.3504, Val loss: 0.3883, Val accy = 87.33%
