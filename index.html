@@ -34,7 +34,9 @@
 
 	</head>
 	<body>
-
+		<div style = "text-align: center; font-size: 50px"><strong> Comment Toxicity </strong></div>
+		<div style = "text-align: center; font-size: 25px"><i> A comparison of the accuracy of seven different classification models
+		on a Kaggle dataset containing Wikipedia comments.  </i></div> 
 		<div class="radarChart"></div>
 
 		<script src="radarChart.js"></script>
@@ -53,51 +55,30 @@
 			////////////////////////// Data //////////////////////////////
 			//////////////////////////////////////////////////////////////
 			var data = [
-					  [//Gaussian NB
-						{axis:"tox",value:0.866},
-						{axis:"sev_tox",value:0.986},
-						{axis:"obs",value:0.92},
-						{axis:"threat",value:0.994},
-						{axis:"insult",value:0.936},
-						{axis:"hate",value:0.99}
-					  ],[//K Nearest Neighbours
-						{axis:"tox",value:0.9},
-						{axis:"sev_tox",value:0.975},
-						{axis:"obs",value:0.945},
-						{axis:"threat",value:1},
-						{axis:"insult",value:0.94},
-						{axis:"hate",value:0.99}
-					  ],[//Random Forest
-						{axis:"tox",value:0.89},
-						{axis:"sev_tox",value:0.99},
-						{axis:"obs",value:0.96},
-						{axis:"threat",value:0.99},
-						{axis:"insult",value:0.95},
-						{axis:"hate",value:1}
-					  ],
-					  [//Decision Tree
-						{axis:"tox",value:0.934},
-						{axis:"sev_tox",value:0.988},
-						{axis:"obs",value:0.972},
-						{axis:"threat",value:0.996},
-						{axis:"insult",value:0.966},
-						{axis:"hate",value:0.986}
-					  ],
-					  [//SVM
-						{axis:"tox",value:0.87},
-						{axis:"sev_tox",value:0.985},
-						{axis:"obs",value:0.95},
-						{axis:"threat",value:0.995},
-						{axis:"insult",value:0.92},
-						{axis:"hate",value:0.995}
-					  ],
-					  [//Logistic Regression
-						{axis:"tox",value:0},
-						{axis:"sev_tox",value:0},
-						{axis:"obs",value:0},
-						{axis:"threat",value:0},
-						{axis:"insult",value:0},
-						{axis:"hate",value:0}
+					  [//iPhone
+						{axis:"Gaussian Naive Bayes",value:0.90},
+						{axis:"Support Vector Machine",value:0.90},
+						{axis:"K Nearest Neighbors",value:0.80},
+						{axis:"Random Forest",value:0.75},
+						{axis:"Decision Tree",value:0.62},
+						{axis:"Logistic Regression",value:0.02},
+						{axis:"BERT",value:0.21},
+					  ],[//Samsung
+						{axis:"Gaussian Naive Bayes",value:0.27},
+						{axis:"Support Vector Machine",value:0.16},
+						{axis:"K Nearest Neighbors",value:0.35},
+						{axis:"Random Forest",value:0.13},
+						{axis:"Decision Tree",value:0.20},
+						{axis:"Logistic Regression",value:0.13},
+						{axis:"BERT",value:0.35},
+					  ],[//Nokia Smartphone
+						{axis:"Gaussian Naive Bayes",value:0.26},
+						{axis:"Support Vector Machine",value:0.10},
+						{axis:"K Nearest Neighbors",value:0.30},
+						{axis:"Random Forest",value:0.14},
+						{axis:"Decision Tree",value:0.22},
+						{axis:"Logistic Regression",value:0.04},
+						{axis:"BERT",value:0.41}
 					  ]
 					];
 			//////////////////////////////////////////////////////////////
@@ -110,8 +91,8 @@
 			  w: width,
 			  h: height,
 			  margin: margin,
-			  maxValue: 0.5,
-			  levels: 5,
+			  maxValue: 1,
+			  levels: 10,
 			  roundStrokes: true,
 			  color: color
 			};
