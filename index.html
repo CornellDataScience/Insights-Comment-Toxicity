@@ -2,15 +2,21 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/ >
-		<title>Smoothed D3.js Radar Chart</title>
-
-		<!-- Google fonts -->
+		<title>Comment Toxicity</title>
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
-		<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+  <script>
+    d3version3 = d3
+    window.d3 = null
+    // test it worked
+    console.log('v3', d3version3.version)
 
-		<!-- D3.js -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
-
+  </script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.10.0/d3.min.js"></script>
+		<script>
+		console.log('v4', d3.version)
+		</script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js'></script>
 		<style>
 			body {
 				font-family: 'Open Sans', sans-serif;
@@ -23,81 +29,257 @@
 			}
 
 			.legend {
-				font-family: 'Raleway', sans-serif;
+				font-family: 'Open Sans', sans-serif;
 				fill: #333333;
 			}
 
 			.tooltip {
 				fill: #333333;
 			}
+			.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+.axis .domain {
+  display: none;
+}
 		</style>
 
 	</head>
 	<body>
-		<div style = "text-align: center; font-size: 50px"><strong> Comment Toxicity </strong></div>
-		<div style = "text-align: center; font-size: 25px"><i> A comparison of the accuracy of seven different classification models
-		on a Kaggle dataset containing Wikipedia comments.  </i></div> 
+		<div style = "text-align: center; font-size: 48px"><strong> comment toxicity </strong></div>
+		<div style = "text-align: center; font-size: 24px"> a comparison of the accuracy of seven different classification models
+		on a kaggle dataset containing wikipedia comments<br/><br/> </div>
+		<div style = "font-size: 16px; margin-left: 40px; margin-right: 40px;"> As the Internet becomes more anonymous, the necessity of moderating toxic and problematic comments
+		increases.  However, companies that require this type of moderation may prioritize different things.
+		Some need a more efficient algorithm, while others care about accuracy. Some may need to detect only the most severe comments, while
+	others desire the most toxicity-free environment possible. To address these goals, we aim to analyze seven popular text classification
+models. </div>
+		<svg width="1080" height="500" id = "svg2"></svg>
 		<div class="radarChart"></div>
 
 		<script src="radarChart.js"></script>
-		<script>
 
-      /* Radar chart design created by Nadieh Bremer - VisualCinnamon.com */
+<script>
 
-			//////////////////////////////////////////////////////////////
-			//////////////////////// Set-Up //////////////////////////////
-			//////////////////////////////////////////////////////////////
-			var margin = {top: 100, right: 100, bottom: 100, left: 100},
-				width = Math.min(700, window.innerWidth - 10) - margin.left - margin.right,
-				height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
+const data2 = [
+	{
+    'State': 'Gaussian Naive Bayes',
+    'Training Time': 1.6079171896,
+    'Testing Time': 0.60516047477,
+    'Average Accuracy': .9379
+  },{
+    'State': 'Support Vector Machine',
+		'Training Time': 2704659,
+    'Testing Time': 4499890,
+    'Average Accuracy': 2159981
+  },
+  {
+    'State': 'K Nearest Neighbors',
+		'Training Time': 2704659,
+    'Testing Time': 4499890,
+    'Average Accuracy': 2159981
+  },
+  {
+    'State': 'Random Forest',
+		'Training Time': 2704659,
+    'Testing Time': 4499890,
+    'Average Accuracy': 2159981
+  },
+  {
+    'State': 'Decision Tree',
+		'Training Time': 2704659,
+    'Testing Time': 4499890,
+    'Average Accuracy': 2159981
+  },
+  {
+    'State': 'Logistic Regression',
+		'Training Time': 2704659,
+    'Testing Time': 4499890,
+    'Average Accuracy': 2159981
+  },
+  {
+    'State': 'BERT*',
+		'Training Time': 2704659,
+    'Testing Time': 4499890,
+    'Average Accuracy': 2159981
+  }
+];
 
-			//////////////////////////////////////////////////////////////
-			////////////////////////// Data //////////////////////////////
-			//////////////////////////////////////////////////////////////
-			var data = [
-					  [//iPhone
-						{axis:"Gaussian Naive Bayes",value:0.90},
-						{axis:"Support Vector Machine",value:0.90},
-						{axis:"K Nearest Neighbors",value:0.80},
-						{axis:"Random Forest",value:0.75},
-						{axis:"Decision Tree",value:0.62},
-						{axis:"Logistic Regression",value:0.02},
-						{axis:"BERT",value:0.21},
-					  ],[//Samsung
-						{axis:"Gaussian Naive Bayes",value:0.27},
-						{axis:"Support Vector Machine",value:0.16},
-						{axis:"K Nearest Neighbors",value:0.35},
-						{axis:"Random Forest",value:0.13},
-						{axis:"Decision Tree",value:0.20},
-						{axis:"Logistic Regression",value:0.13},
-						{axis:"BERT",value:0.35},
-					  ],[//Nokia Smartphone
-						{axis:"Gaussian Naive Bayes",value:0.26},
-						{axis:"Support Vector Machine",value:0.10},
-						{axis:"K Nearest Neighbors",value:0.30},
-						{axis:"Random Forest",value:0.14},
-						{axis:"Decision Tree",value:0.22},
-						{axis:"Logistic Regression",value:0.04},
-						{axis:"BERT",value:0.41}
-					  ]
-					];
-			//////////////////////////////////////////////////////////////
-			//////////////////// Draw the Chart //////////////////////////
-			//////////////////////////////////////////////////////////////
-			var color = d3.scale.ordinal()
-				.range(["#EDC951","#CC333F","#00A0B0"]);
+const keys = Object.keys(data2[0]).slice(1);
 
-			var radarChartOptions = {
-			  w: width,
-			  h: height,
-			  margin: margin,
-			  maxValue: 1,
-			  levels: 10,
-			  roundStrokes: true,
-			  color: color
-			};
-			//Call function to draw the Radar chart
-			RadarChart(".radarChart", data, radarChartOptions);
-		</script>
+const tip = d3.tip().html(d=> d.value);
+
+const margin2 = {
+    top: 40,
+    right: 80,
+    bottom: 20,
+    left: 80
+  },
+  width2 = 1080,
+  height2 = 500,
+  innerWidth = width2 - margin2.left - margin2.right,
+  innerHeight = height2 - margin2.top - margin2.bottom,
+  svg2 = d3.select('body').select('#svg2').attr('width', width2).attr('height', height2)
+  g = svg2.append('g').attr('transform', `translate(${margin2.left}, ${margin2.top})`);
+
+svg2.call(tip)
+
+const x0 = d3.scaleBand()
+  .rangeRound([0, innerWidth])
+  .paddingInner(.1);
+
+const x1 = d3.scaleBand()
+  .padding(.05);
+
+const y = d3.scaleLinear()
+  .rangeRound([innerHeight, 0]);
+
+const z = d3.scaleOrdinal()
+  .range(['#AA8139', '#AA9439', '#3C3176', '#2C4770', '#96A537', '#68266F', '#492E74']);
+
+  x0.domain(data2.map(d => d.State));
+  x1.domain(keys).rangeRound([0, x0.bandwidth()]);
+  y.domain([0, d3.max(data2, d => d3.max(keys, key=> d[key]))]).nice();
+console.log("ok")
+g.append('g')
+  .selectAll('g')
+  .data(data2)
+  .enter()
+  .append('g')
+  .attr('transform', d => 'translate(' + x0(d.State) + ',0)')
+  .selectAll('rect')
+  .data(d => keys.map(key => {return {key: key, value: d[key]}}))
+  .enter().append('rect')
+  .attr('x', d => x1(d.key))
+  .attr('y', d => y(d.value))
+  .attr('width', x1.bandwidth())
+  .attr('height', d => innerHeight - y(d.value))
+  .attr('fill', d =>  z(d.key))
+  .on('mouseover', tip.show)
+  .on('mouseout', tip.hide)
+console.log("ok")
+g.append('g')
+  .attr('class', 'axis-bottom')
+  .attr('transform', 'translate(0,' + innerHeight + ')')
+  .call(d3.axisBottom(x0));
+
+g.append('g')
+  .attr('class', 'axis-left')
+  .call(d3.axisLeft(y).ticks(null, 's'))
+  .append('text')
+  .attr('x', 10)
+  .attr('y', y(y.ticks().pop()) + 10)
+  .attr('dy', '0.32em')
+  .attr('fill', '#000')
+  .style('transform', 'rotate(-90deg)')
+  .attr('font-weight', 'bold')
+  .attr('text-anchor', 'end')
+  .text('Time (s)');
+
+const legend = g.append('g')
+   .attr('font-family', 'sans-serif')
+   .attr('font-size', 10)
+   .attr('text-anchor', 'end')
+   .selectAll('g')
+   .data(keys.slice().reverse())
+   .enter().append('g')
+   .attr('transform', (d, i) => 'translate(0,' + i * 20 + ')');
+
+legend.append('rect')
+  .attr('x', innerWidth - 19)
+  .attr('width', 10)
+  .attr('height', 10)
+  .attr('fill', z);
+
+legend.append('text')
+  .attr('x', innerWidth - 32)
+  .attr('y', 6)
+  .attr('dy', '0.32em')
+  .text(d => d);
+</script>
+<script>
+	var margin = {top: 100, right: 100, bottom: 100, left: 100},
+		width = Math.min(700, window.innerWidth - 10) - margin.left - margin.right,
+		height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
+	var data = [
+				[
+				{axis:"Gaussian Naive Bayes",value:0.7912},
+				{axis:"Support Vector Machine",value:0.90},
+				{axis:"K Nearest Neighbors",value:0.80},
+				{axis:"Random Forest",value:0.75},
+				{axis:"Decision Tree",value:0.62},
+				{axis:"Logistic Regression",value:0.02},
+				{axis:"BERT",value:0.21},
+				],[
+				{axis:"Gaussian Naive Bayes",value:0.9746666666666667},
+				{axis:"Support Vector Machine",value:0.16},
+				{axis:"K Nearest Neighbors",value:0.35},
+				{axis:"Random Forest",value:0.13},
+				{axis:"Decision Tree",value:0.20},
+				{axis:"Logistic Regression",value:0.13},
+				{axis:"BERT",value:0.35},
+				],[
+				{axis:"Gaussian Naive Bayes",value:0.8682666666666666},
+				{axis:"Support Vector Machine",value:0.10},
+				{axis:"K Nearest Neighbors",value:0.30},
+				{axis:"Random Forest",value:0.14},
+				{axis:"Decision Tree",value:0.22},
+				{axis:"Logistic Regression",value:0.04},
+				{axis:"BERT",value:0.41}
+				],
+				[
+				{axis:"Gaussian Naive Bayes",value:0.9906666666666667},
+				{axis:"Support Vector Machine",value:0.10},
+				{axis:"K Nearest Neighbors",value:0.30},
+				{axis:"Random Forest",value:0.14},
+				{axis:"Decision Tree",value:0.22},
+				{axis:"Logistic Regression",value:0.04},
+				{axis:"BERT",value:0.41}
+				],
+				[
+				{axis:"Gaussian Naive Bayes",value:0.8808},
+				{axis:"Support Vector Machine",value:0.10},
+				{axis:"K Nearest Neighbors",value:0.30},
+				{axis:"Random Forest",value:0.14},
+				{axis:"Decision Tree",value:0.22},
+				{axis:"Logistic Regression",value:0.04},
+				{axis:"BERT",value:0.41}
+				],
+				[
+				{axis:"Gaussian Naive Bayes",value:0.9717333333333333},
+				{axis:"Support Vector Machine",value:0.10},
+				{axis:"K Nearest Neighbors",value:0.30},
+				{axis:"Random Forest",value:0.14},
+				{axis:"Decision Tree",value:0.22},
+				{axis:"Logistic Regression",value:0.04},
+				{axis:"BERT",value:0.41}
+				],
+
+			];
+	//////////////////////////////////////////////////////////////
+	//////////////////// Draw the Chart //////////////////////////
+	//////////////////////////////////////////////////////////////
+	var color = d3version3.scale.ordinal()
+		.range(["#EDC951","#CC333F","#00A0B0"]);
+
+	var radarChartOptions = {
+		w: width,
+		h: height,
+		margin: margin,
+		maxValue: 1,
+		levels: 10,
+		roundStrokes: true,
+		color: color
+	};
+	//Call function to draw the Radar chart
+	RadarChart(".radarChart", data, radarChartOptions);
+</script>
 	</body>
 </html>
