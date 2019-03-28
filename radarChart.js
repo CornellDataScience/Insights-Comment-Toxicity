@@ -12,7 +12,7 @@ function RadarChart(id, data, options) {
 	 margin: {top: 20, right: 20, bottom: 20, left: 20}, //The margins of the SVG
 	 levels: 3,				//How many levels or inner circles should there be drawn
 	 maxValue: 0, 			//What is the value that the biggest circle will represent
-	 labelFactor: 1.25, 	//How much farther than the radius of the outer circle should the labels be placed
+	 labelFactor: 1.04, 	//How much farther than the radius of the outer circle should the labels be placed
 	 wrapWidth: 60, 		//The number of pixels after which a label needs to be given a new line
 	 opacityArea: 0.35, 	//The opacity of the area of the blob
 	 dotRadius: 4, 			//The size of the colored circles of each blog
@@ -21,7 +21,7 @@ function RadarChart(id, data, options) {
 	 roundStrokes: false,	//If true the area and stroke will follow a round path (cardinal-closed)
 	 color: d3version3.scale.category10()	//Color function
 	};
-
+	var count = 0;
 	//Put all of the options into a variable called cfg
 	if('undefined' !== typeof options){
 	  for(var i in options){
@@ -40,8 +40,8 @@ function RadarChart(id, data, options) {
 
 	//Scale for the radius
 	var rScale = d3version3.scale.linear()
-		.range([0, radius])
-		.domain([0, maxValue]);
+		.range([0.8, radius])
+		.domain([0.8, maxValue]);
 
 	/////////////////////////////////////////////////////////
 	//////////// Create the container SVG and g /////////////
@@ -89,6 +89,27 @@ function RadarChart(id, data, options) {
 		.style("fill-opacity", cfg.opacityCircles)
 		.style("filter" , "url(#glow)");
 
+	function getText(level) {
+		if (level == 1) return .9;
+		else if (level == 2) return 1;
+	}
+
+	function getName(){
+		count++;
+		if (count == 1)
+			return "tox";
+		else if (count == 2)
+			return "sev_tox";
+		else if (count == 3)
+			return "obs";
+		else if (count == 4)
+			return "threat"; 
+		else if (count == 5)
+			return "insult";
+		else {
+			return "hate";
+		}
+	}
 	//Text indicating at what % each level is
 	axisGrid.selectAll(".axisLabel")
 	   .data(d3version3.range(1,(cfg.levels+1)).reverse())
@@ -99,7 +120,7 @@ function RadarChart(id, data, options) {
 	   .attr("dy", "0.4em")
 	   .style("font-size", "10px")
 	   .attr("fill", "#737373")
-	   .text(function(d,i) { return Format(maxValue * d/cfg.levels); });
+	   .text(function(d,i) { return Format(getText(d)); });
 
 	/////////////////////////////////////////////////////////
 	//////////////////// Draw the axes //////////////////////
@@ -129,7 +150,7 @@ function RadarChart(id, data, options) {
 		.attr("dy", "0.35em")
 		.attr("x", function(d, i){ return rScale(maxValue * cfg.labelFactor) * Math.cos(angleSlice*i - Math.PI/2); })
 		.attr("y", function(d, i){ return rScale(maxValue * cfg.labelFactor) * Math.sin(angleSlice*i - Math.PI/2); })
-		.text(function(d){return d})
+		.text(function(d){console.log(d); return d;})
 		.call(wrap, cfg.wrapWidth);
 
 	/////////////////////////////////////////////////////////
@@ -174,7 +195,8 @@ function RadarChart(id, data, options) {
 			d3version3.selectAll(".radarArea")
 				.transition().duration(200)
 				.style("fill-opacity", cfg.opacityArea);
-		});
+		})
+		.attr("data-legend",function(d) { return getName()});
 
 	//Create the outlines
 	blobWrapper.append("path")
@@ -236,6 +258,12 @@ function RadarChart(id, data, options) {
 	var tooltip = g.append("text")
 		.attr("class", "tooltip")
 		.style("opacity", 0);
+	var legend2 = svg.append("g")
+		  .attr("class","legend")
+		  .attr("transform","translate(50,30)")
+		  .style("font-size","12px")
+		  .call(d3.legend)
+
 
 	/////////////////////////////////////////////////////////
 	/////////////////// Helper Function /////////////////////

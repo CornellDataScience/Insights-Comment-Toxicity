@@ -1,6 +1,6 @@
 State,Training Time,Testing Time,Average Accuracy
 Naive Bayes,1.6079171896,0.60516047477,21
-Support Vector Machine,20,32,14
+Support Vector Machine,146.8206,32,14
 K Nearest Neighbors,12,21,10
 Random Forest,11,19,92
 Decision Tree,89,15,72

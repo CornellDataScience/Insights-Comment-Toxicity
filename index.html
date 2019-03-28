@@ -17,6 +17,7 @@
 		console.log('v4', d3.version)
 		</script>
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js'></script>
+	<script src = "d3.legend.js"></script> 
 		<style>
 			body {
 				font-family: 'Open Sans', sans-serif;
@@ -56,11 +57,20 @@
 		<div style = "text-align: center; font-size: 48px"><strong> comment toxicity </strong></div>
 		<div style = "text-align: center; font-size: 24px"> a comparison of the accuracy of seven different classification models
 		on a kaggle dataset containing wikipedia comments<br/><br/> </div>
-		<div style = "font-size: 16px; margin-left: 40px; margin-right: 40px;"> As the Internet becomes more anonymous, the necessity of moderating toxic and problematic comments
+		<div style = "text-align: left; margin-left: 40px; margin-right: 40px; font-size: 30px"><u> about our project </u>
+		<p style = "font-size: 16px"> As the Internet becomes more anonymous, the necessity of moderating toxic and problematic comments
 		increases.  However, companies that require this type of moderation may prioritize different things.
 		Some need a more efficient algorithm, while others care about accuracy. Some may need to detect only the most severe comments, while
 	others desire the most toxicity-free environment possible. To address these goals, we aim to analyze seven popular text classification
-models. </div>
+models.</p> </div>
+<div style = "text-align: left; margin-left: 40px; margin-right: 40px; font-size: 30px"><u> preprocessing </u>
+<p style = "font-size: 16px"> First, we standardized our data by removing the punctuation and converting everything to lowercase.
+Then, to give the best accuracy possible, we decided to turn our words into numbers with three vectorizers: CountVectorizer, HashingVectorizer,
+and TfidfVectorizer. A quick run-through showed that TfidfVectorizer gave the best results, so we decided to use that.
+<br/> </p> </div>
+<div style = "text-align: left; margin-left: 40px; margin-right: 40px; font-size: 30px"><u> caveats </u>
+<p style = "font-size: 16px">
+<br/> </p> </div>
 		<svg width="1080" height="500" id = "svg2"></svg>
 		<div class="radarChart"></div>
 
@@ -71,44 +81,44 @@ models. </div>
 const data2 = [
 	{
     'State': 'Gaussian Naive Bayes',
-    'Training Time': 1.6079171896,
-    'Testing Time': 0.60516047477,
-    'Average Accuracy': .9379
+    'Training Time': 1.6079,
+    'Testing Time': 0.6052,
+    'Accuracy': 93.79
   },{
     'State': 'Support Vector Machine',
-		'Training Time': 2704659,
-    'Testing Time': 4499890,
-    'Average Accuracy': 2159981
+		'Training Time': 146.8206,
+    'Testing Time': 45.3989,
+    'Accuracy': 96.87
   },
   {
     'State': 'K Nearest Neighbors',
-		'Training Time': 2704659,
-    'Testing Time': 4499890,
-    'Average Accuracy': 2159981
+		'Training Time': 3.5802,
+    'Testing Time': 132.0329,
+    'Accuracy': 97.23
   },
   {
     'State': 'Random Forest',
-		'Training Time': 2704659,
-    'Testing Time': 4499890,
-    'Average Accuracy': 2159981
+		'Training Time': 4.5756,
+    'Testing Time': .07483,
+    'Accuracy': 96.84
   },
   {
     'State': 'Decision Tree',
-		'Training Time': 2704659,
-    'Testing Time': 4499890,
-    'Average Accuracy': 2159981
+		'Training Time': 49.1713,
+    'Testing Time': .07766,
+    'Accuracy': 96.97
   },
   {
     'State': 'Logistic Regression',
-		'Training Time': 2704659,
-    'Testing Time': 4499890,
-    'Average Accuracy': 2159981
+		'Training Time': 2.7116,
+    'Testing Time': .04997,
+    'Accuracy': 96.4
   },
   {
     'State': 'BERT*',
-		'Training Time': 2704659,
-    'Testing Time': 4499890,
-    'Average Accuracy': 2159981
+		'Training Time': 158.3623,
+    'Testing Time': 4.7110,
+    'Accuracy': 86.4
   }
 ];
 
@@ -142,7 +152,7 @@ const y = d3.scaleLinear()
   .rangeRound([innerHeight, 0]);
 
 const z = d3.scaleOrdinal()
-  .range(['#AA8139', '#AA9439', '#3C3176', '#2C4770', '#96A537', '#68266F', '#492E74']);
+  .range(["#EDC951","#CC333F","#00A0B0"]);
 
   x0.domain(data2.map(d => d.State));
   x1.domain(keys).rangeRound([0, x0.bandwidth()]);
@@ -210,71 +220,68 @@ legend.append('text')
 		height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
 	var data = [
 				[
-				{axis:"Gaussian Naive Bayes",value:0.7912},
-				{axis:"Support Vector Machine",value:0.90},
-				{axis:"K Nearest Neighbors",value:0.80},
-				{axis:"Random Forest",value:0.75},
-				{axis:"Decision Tree",value:0.62},
-				{axis:"Logistic Regression",value:0.02},
-				{axis:"BERT",value:0.21},
+				{axis:"Gaussian Naive Bayes",value:0.8624},
+				{axis:"Support Vector Machine",value:0.908},
+				{axis:"K Nearest Neighbors",value:0.9264},
+				{axis:"Random Forest",value:0.9192},
+				{axis:"Decision Tree",value:0.9304},
+				{axis:"Logistic Regression",value:0.92},
+				{axis:"BERT",value:0.96},
 				],[
-				{axis:"Gaussian Naive Bayes",value:0.9746666666666667},
-				{axis:"Support Vector Machine",value:0.16},
-				{axis:"K Nearest Neighbors",value:0.35},
-				{axis:"Random Forest",value:0.13},
-				{axis:"Decision Tree",value:0.20},
-				{axis:"Logistic Regression",value:0.13},
-				{axis:"BERT",value:0.35},
+				{axis:"Gaussian Naive Bayes",value:0.9768},
+				{axis:"Support Vector Machine",value:0.992},
+				{axis:"K Nearest Neighbors",value:0.9864},
+				{axis:"Random Forest",value:0.9888},
+				{axis:"Decision Tree",value:0.9864},
+				{axis:"Logistic Regression",value:0.9848},
+				{axis:"BERT",value:0.84}
 				],[
-				{axis:"Gaussian Naive Bayes",value:0.8682666666666666},
-				{axis:"Support Vector Machine",value:0.10},
-				{axis:"K Nearest Neighbors",value:0.30},
-				{axis:"Random Forest",value:0.14},
-				{axis:"Decision Tree",value:0.22},
-				{axis:"Logistic Regression",value:0.04},
-				{axis:"BERT",value:0.41}
+				{axis:"Gaussian Naive Bayes",value:0.9056},
+				{axis:"Support Vector Machine",value:0.9576},
+				{axis:"K Nearest Neighbors",value:0.9736},
+				{axis:"Random Forest",value:0.9632},
+				{axis:"Decision Tree",value:0.9712},
+				{axis:"Logistic Regression",value:0.9496},
+				{axis:"BERT",value:0.94}
 				],
 				[
-				{axis:"Gaussian Naive Bayes",value:0.9906666666666667},
-				{axis:"Support Vector Machine",value:0.10},
-				{axis:"K Nearest Neighbors",value:0.30},
-				{axis:"Random Forest",value:0.14},
-				{axis:"Decision Tree",value:0.22},
-				{axis:"Logistic Regression",value:0.04},
-				{axis:"BERT",value:0.41}
+				{axis:"Gaussian Naive Bayes",value:0.9904},
+				{axis:"Support Vector Machine",value:0.9968},
+				{axis:"K Nearest Neighbors",value:0.996},
+				{axis:"Random Forest",value:0.9976},
+				{axis:"Decision Tree",value:0.9952},
+				{axis:"Logistic Regression",value:0.9952},
+				{axis:"BERT",value:0.84}
 				],
 				[
-				{axis:"Gaussian Naive Bayes",value:0.8808},
-				{axis:"Support Vector Machine",value:0.10},
-				{axis:"K Nearest Neighbors",value:0.30},
-				{axis:"Random Forest",value:0.14},
-				{axis:"Decision Tree",value:0.22},
-				{axis:"Logistic Regression",value:0.04},
-				{axis:"BERT",value:0.41}
+				{axis:"Gaussian Naive Bayes",value:0.9152},
+				{axis:"Support Vector Machine",value:0.9656},
+				{axis:"K Nearest Neighbors",value:0.9576},
+				{axis:"Random Forest",value:0.9528},
+				{axis:"Decision Tree",value:0.9504},
+				{axis:"Logistic Regression",value:0.9456},
+				{axis:"BERT",value:0.84}
 				],
 				[
-				{axis:"Gaussian Naive Bayes",value:0.9717333333333333},
-				{axis:"Support Vector Machine",value:0.10},
-				{axis:"K Nearest Neighbors",value:0.30},
-				{axis:"Random Forest",value:0.14},
-				{axis:"Decision Tree",value:0.22},
-				{axis:"Logistic Regression",value:0.04},
-				{axis:"BERT",value:0.41}
+				{axis:"Gaussian Naive Bayes",value:0.9768},
+				{axis:"Support Vector Machine",value:0.992},
+				{axis:"K Nearest Neighbors",value:0.9936},
+				{axis:"Random Forest",value:0.9888},
+				{axis:"Decision Tree",value:0.9848},
+				{axis:"Logistic Regression",value:0.9888},
+				{axis:"BERT",value:0.84}
 				],
 
 			];
-	//////////////////////////////////////////////////////////////
-	//////////////////// Draw the Chart //////////////////////////
-	//////////////////////////////////////////////////////////////
 	var color = d3version3.scale.ordinal()
-		.range(["#EDC951","#CC333F","#00A0B0"]);
+		.range(["#EDC951","#CC333F","#00A0B0", "#fff1c4","#f98b95","#aff8ff"]);
 
 	var radarChartOptions = {
 		w: width,
 		h: height,
 		margin: margin,
 		maxValue: 1,
-		levels: 10,
+		levels: 2,
 		roundStrokes: true,
 		color: color
 	};
