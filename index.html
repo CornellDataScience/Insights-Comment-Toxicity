@@ -17,7 +17,7 @@
 		console.log('v4', d3.version)
 		</script>
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js'></script>
-	<script src = "d3.legend.js"></script> 
+	<script src = "d3.legend.js"></script>
 		<style>
 			body {
 				font-family: 'Open Sans', sans-serif;
@@ -69,6 +69,11 @@ Then, to give the best accuracy possible, we decided to turn our words into numb
 and TfidfVectorizer. A quick run-through showed that TfidfVectorizer gave the best results, so we decided to use that.
 <br/> </p> </div>
 <div style = "text-align: left; margin-left: 40px; margin-right: 40px; font-size: 30px"><u> caveats </u>
+	<p style = "font-size: 16px"> We trained our dataset with roughly 3% of the size of the actual dataset, due to time and computer memory constraints.
+		This gives somewhat artificially inflated values, due to the test sets being much smaller. (for reference, when we tried training the GNB classifier with the full dataset, the
+		acccuracies were ~5% lower.) Also, with BERT, we used an sklearn wrapper that causes the training and test times to be significantly higher
+		than if we'd used Google's official TF library (something that we'd like to change soon.)
+	<br/> </p>
 <p style = "font-size: 16px">
 <br/> </p> </div>
 		<svg width="1080" height="500" id = "svg2"></svg>
