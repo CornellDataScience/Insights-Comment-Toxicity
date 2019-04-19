@@ -6,42 +6,49 @@ text {
 	font: 10px arial;
 }
 
-.Female {
-	fill: #fc8d59;
+.a {
+	/* fill: #1F77B4; */
+	fill: #CCCCCC;
 }
 
-.Male {
-	fill: #91bfdb;
+.b {
+	/* fill: #FF7F0E; */
+	fill: #CCCCCC;
 }
 
 .c {
-	fill: #9a3d73;
+	/* fill: #2CA02C; */
+	fill: #CCCCCC;
 }
 
 .d {
-	fill: #3ae9fd;
+	/* fill: #D62728; */
+	fill: #CCCCCC;
 }
 
 .e {
-	fill: #d3b464;
+	/* fill: #9467BD; */
+	fill: #CCCCCC;
 }
 
 .f {
-	fill: #5335f8;
+	/* fill: #8C564B; */
+	fill: #CCCCCC;
 }
 
 .legend {
-	            padding: 5px;
-	            font: 10px sans-serif;
-	            background: yellow;
-	            box-shadow: 2px 2px 1px #888;
-            }
+	padding: 5px;
+	font: 10px sans-serif;
+	background: yellow;
+	box-shadow: 2px 2px 1px #888;
+}
 
 </style>
 <body>
 	<div align='center'>
 	<button type="button" onclick="renderAll()" style="font-size:15px">All</button>
 	<button type="button" onclick="renderByGender()" style="font-size:15px">By Gender</button>
+	<button type="button" onclick = "renderByGroup2()" style="font-size:15px">By Group3</button>
 	</div>
 </body>
 <script src="http://d3js.org/d3.v3.min.js"></script>
@@ -56,8 +63,8 @@ d3.selection.prototype.moveToFront = function() {
 var diameter = 485,
 		format = d3.format(",d"),
 		all_nodes,
-		female_nodes,
-		male_nodes,
+		a_nodes,
+		b_nodes,
 		c_nodes,
 		d_nodes,
 		e_nodes,
@@ -82,20 +89,27 @@ var svg = d3.select("body").append("svg")
 d3.json("most_informative_features_new.json", function(error, json) {
 	if (error) throw error;
 
-	var females = [],
-			males = [],
+	var as = [],
+			bs = [],
 			cs = [],
 			ds = [],
 			es = [],
 			fs = [];
 
+	var as2 = [],
+			bs2 = [],
+			cs2 = [],
+			ds2 = [],
+			es2 = [],
+			fs2 = [];
+
 	for(i=0; i<json.length; i++) {
 		switch(json[i].gender) {
-			case 'Female':
-				females.push(json[i]);
+			case 'a':
+				as.push(json[i]);
 				break;
-			case 'Male':
-				males.push(json[i]);
+			case 'b':
+				bs.push(json[i]);
 				break;
 			case 'c':
 				cs.push(json[i]);
@@ -110,6 +124,26 @@ d3.json("most_informative_features_new.json", function(error, json) {
 				fs.push(json[i]);
 				break;
 		}
+		switch(json[i].group2) {
+			case 'a':
+				as2.push(json[i]);
+				break;
+			case 'b':
+				bs2.push(json[i]);
+				break;
+			case 'c':
+				cs2.push(json[i]);
+				break;
+			case 'd':
+				ds2.push(json[i]);
+				break;
+			case 'e':
+				es2.push(json[i]);
+				break;
+			default:
+				fs2.push(json[i]);
+				break;
+		}
 	}
 
 	all_nodes = {
@@ -117,14 +151,14 @@ d3.json("most_informative_features_new.json", function(error, json) {
 		children: json
 	}
 
-	female_nodes = {
+	a_nodes = {
 		text: "root",
-		children: females
+		children: as
 	}
 
-	male_nodes = {
+	b_nodes = {
 		text: "root",
-		children: males
+		children: bs
 	}
 
 	c_nodes = {
@@ -147,26 +181,70 @@ d3.json("most_informative_features_new.json", function(error, json) {
 		children: fs
 	}
 
+	a_nodes2 = {
+		text: "root",
+		children: as2
+	}
+
+	b_nodes2 = {
+		text: "root",
+		children: bs2
+	}
+
+	c_nodes2 = {
+		text: "root",
+		children: cs2
+	}
+
+	d_nodes2 = {
+		text: "root",
+		children: ds2
+	}
+
+	e_nodes2 = {
+		text: "root",
+		children: es2
+	}
+
+	f_nodes2 = {
+		text: "root",
+		children: fs2
+	}
+
 	all_nodes = bubble_all.nodes(classes(all_nodes));
-	female_nodes = bubble.nodes(classes(female_nodes));
-	male_nodes = bubble.nodes(classes(male_nodes));
+	a_nodes = bubble.nodes(classes(a_nodes));
+	b_nodes = bubble.nodes(classes(b_nodes));
 	c_nodes = bubble.nodes(classes(c_nodes));
 	d_nodes = bubble.nodes(classes(d_nodes));
 	e_nodes = bubble.nodes(classes(e_nodes));
 	f_nodes = bubble.nodes(classes(f_nodes));
 
+	a_nodes2 = bubble.nodes(classes(a_nodes2));
+	b_nodes2 = bubble.nodes(classes(b_nodes2));
+	c_nodes2 = bubble.nodes(classes(c_nodes2));
+	d_nodes2 = bubble.nodes(classes(d_nodes2));
+	e_nodes2 = bubble.nodes(classes(e_nodes2));
+	f_nodes2 = bubble.nodes(classes(f_nodes2));
+
 	//Remove root
 	all_nodes.splice(0,1);
-	female_nodes.splice(0, 1);
-	male_nodes.splice(0, 1);
+	a_nodes.splice(0, 1);
+	b_nodes.splice(0, 1);
 	c_nodes.splice(0, 1);
 	d_nodes.splice(0, 1);
 	e_nodes.splice(0, 1);
 	f_nodes.splice(0, 1);
 
-	split_nodes = female_nodes.slice();
-	for(i=0; i < male_nodes.length; i++) {
-		split_nodes.push(male_nodes[i]);
+	a_nodes2.splice(0, 1);
+	b_nodes2.splice(0, 1);
+	c_nodes2.splice(0, 1);
+	d_nodes2.splice(0, 1);
+	e_nodes2.splice(0, 1);
+	f_nodes2.splice(0, 1);
+
+	split_nodes = a_nodes.slice();
+	for(i=0; i < b_nodes.length; i++) {
+		split_nodes.push(b_nodes[i]);
 	}
 	for(i=0; i < c_nodes.length; i++) {
 		split_nodes.push(c_nodes[i]);
@@ -181,6 +259,23 @@ d3.json("most_informative_features_new.json", function(error, json) {
 		split_nodes.push(f_nodes[i]);
 	}
 
+	split_nodes2 = a_nodes2.slice();
+	for(i=0; i < b_nodes2.length; i++) {
+		split_nodes2.push(b_nodes2[i]);
+	}
+	for(i=0; i < c_nodes2.length; i++) {
+		split_nodes2.push(c_nodes2[i]);
+	}
+	for(i=0; i < d_nodes2.length; i++) {
+		split_nodes2.push(d_nodes2[i]);
+	}
+	for(i=0; i < e_nodes2.length; i++) {
+		split_nodes2.push(e_nodes2[i]);
+	}
+	for(i=0; i < f_nodes2.length; i++) {
+		split_nodes2.push(f_nodes2[i]);
+	}
+
 	update(all_nodes, 'all');
 	addLegend();
 });
@@ -191,7 +286,7 @@ function classes(root) {
 
 	function recurse(name, node) {
 		if (node.children) node.children.forEach(function(child) { recurse(node.text, child); });
-		else classes.push({packageName: node.gender, className: node.text, value: node.size});
+		else classes.push({packageName: node.gender, packageName2: node.group2, className: node.text, value: node.size});		// Use value for node.size ?????
 	}
 
 	recurse(null, root);
@@ -199,39 +294,99 @@ function classes(root) {
 }
 
 function mouseover() {
-  d3.select(this)
-		.attr("originalr", function(d) { return d.r; })
+	var sel = d3.select(this);
+	if (d3.event.shiftKey) {
+		if (sel.attr("isbig") == 0) {
+			sel.select("circle")
+				.attr("stroke-width", 8);
+			sel.attr("isbig", 1);
+			sel.select("text")
+				.text(function(d) { return d.className; });
+		}
+	}
+
+  sel.attr("originalr", function(d) { return d.r; })
 		.moveToFront()
 		// .attr("oldr", d3.select(this).select("circle").attr("r"))
 		.select("circle").transition()
       .duration(50)
       .attr("r", 50)
+	sel.select("text")
+			.text(function(d) { return d.className; });
 }
 
 function mouseout() {
-  var sel = d3.select(this);
-	// if (sel.attr("isbig") == 1) return;
+	var sel = d3.select(this);
+	if (d3.event.ctrlKey) {
+		if (sel.attr("isbig") == 1) {
+			sel.select("circle")
+				.attr("stroke-width", 0);
+			sel.attr("isbig", 0);
+			sel.select("text")
+				.text(function(d) { return d.className.substring(0, d.r / 3); });
+			}
+	}
+
 	sel.select("circle").transition()
       .duration(50)
       .attr("r", sel.attr("originalr"));
+	if (sel.attr("isbig") == 1) return;
+	sel.select("text")
+		.text(function(d) { return d.className.substring(0, d.r / 3); });
 }
 
 function click() {
+	// console.log(svg.selectAll(".node")[0][1]);
+	// for (el in svg.selectAll(".node")) {
+	// 	console.log(el);
+	// }
+	// if (d3.event.shiftKey) {
+	// 	var nodeClass = d3.select(this).select("circle").attr("class");
+	// 	d3.json("most_informative_features_new.json", function(error, json) {
+	// 		for (i=0; i<json.length; i++) {
+	// 			console.log(json[i]);
+	// 			if (nodeClass == json[i].gender) {
+	// 				var sel = d3.select(json[i]);
+	// 				if (sel.select("circle").attr("isbig") == 0) {
+	// 					// mouseover;
+	// 					sel.select("circle")
+	// 						.attr("stroke-width", 8);
+	// 					sel.attr("isbig", 1);
+	// 					sel.select("text")
+	// 						.text(function(d) { return d.className; });
+	// 				} else {
+	// 					// mouseout;
+	// 					sel.select("circle")
+	// 						.attr("stroke-width", 0);
+	// 					sel.attr("isbig", 0);
+	// 					sel.select("text")
+	// 						.text(function(d) { return d.className.substring(0, d.r / 3); });
+	// 			}
+	// 		}
+	// 	}
+	// })
+	// 	return;
+	// }
+
 	var sel = d3.select(this);
 	if (sel.attr("isbig") == 0) {
 		// mouseover;
 		sel.select("circle")
 			.attr("stroke-width", 8);
 		sel.attr("isbig", 1);
+		sel.select("text")
+			.text(function(d) { return d.className; });
 	} else {
 		// mouseout;
 		sel.select("circle")
 			.attr("stroke-width", 0);
 		sel.attr("isbig", 0);
+		sel.select("text")
+			.text(function(d) { return d.className.substring(0, d.r / 3); });
 	}
 }
 
-function update(nodes, mode){
+function update(nodes, mode) {
 
 	var node = svg.selectAll(".node")
 			.data(nodes, function(d) { return d.className; })
@@ -242,13 +397,14 @@ function update(nodes, mode){
 	node.transition()
 			.duration(750)
 			.attr("transform", function(d) {
-				if(mode == 'all') {
+				if (mode == 'all') {
 					return "translate(" + (d.x + 1000) + "," + (d.y + 1000) + ")";
 				} else {
-					switch (d.packageName) {
-						case 'Female':
+					var realPackage = ((mode == 'split') ? d.packageName : d.packageName2);
+					switch (realPackage) {
+						case 'a':
 							return "translate(" + (d.x + 750) + "," + (d.y + 500) + ")";
-						case 'Male':
+						case 'b':
 							return "translate(" + (d.x + 1250) + "," + (d.y + 500) + ")";
 						case 'c':
 							return "translate(" + (d.x + 1500) + "," + (d.y + 1000) + ")";
@@ -282,7 +438,7 @@ function update(nodes, mode){
 			.attr("r", function(d) { return d.r; })
 			.attr("stroke", 'red')
 			.attr("stroke-width", 0)
-			.attr("class", function(d) { return d.packageName; });
+			.attr("class", function(d) { return ((mode == 'switch') ? d.packageName : d.packageName2); });
 
 	news.append("text")
 			.attr("dy", ".3em")
@@ -295,12 +451,16 @@ function update(nodes, mode){
 
 }
 
+function renderByGroup2() {
+	update(split_nodes2, 'split2');
+}
+
 function renderByGender() {
- update(split_nodes, 'split');
+ 	update(split_nodes, 'split');
 }
 
 function renderAll() {
- update(all_nodes, 'all');
+ 	update(all_nodes, 'all');
 }
 
 function addLegend() {
