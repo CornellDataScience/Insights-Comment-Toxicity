@@ -5,34 +5,70 @@
 		font: 15px arial;
 	}
 	button {
-    color:#050;
-    font: old 84% 'trebuchet ms',helvetica,sans-serif;
+    color:#000;
     background-color:#fed;
     border:1px solid;
-    border-color: #696 #363 #363 #696;
 		position: fixed;
-
+	}
+	[id=tox] {
+  	position: absolute;
+  	top: 725px;
+  	left: 675px;
+	}
+	[id=sevtox] {
+  	position: absolute;
+  	top: 725px;
+  	left: 1800px;
+	}
+	[id=obs] {
+  	position: absolute;
+  	top: 1200px;
+  	left: 2050px;
+	}
+	[id=threat] {
+  	position: absolute;
+  	top: 1700px;
+  	left: 1800px;
+	}
+	[id=insult] {
+  	position: absolute;
+  	top: 1700px;
+  	left: 675px;
+	}
+	[id=hate] {
+  	position: absolute;
+  	top: 1200px;
+  	left: 350px;
 	}
 </style>
 
 <body>
-	<div align='center'>
-	<button type="button" onclick="renderAll()" style="font-size:15px">None</button>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<button type="button" onclick="renderByGender()" style="font-size:15px">Naive bayes</button>
+	<div align='right'>
+	<button type="button" onclick="renderByGender()" style="font-size:30px">Naive bayes</button>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<button type="button" onclick = "renderByGroup2()" style="font-size:15px">k-NN</button>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<button type="button" onclick = "renderByGroup2()" style="font-size:30px">k-NN</button>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<button type="button" onclick = "renderByGroup3()" style="font-size:15px">Logistic Regression</button>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<button type="button" onclick = "renderByGroup3()" style="font-size:30px">Logistic Regression</button>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<button type="button" onclick = "renderByGroup4()" style="font-size:15px">Random forest</button>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<button type="button" onclick = "renderByGroup5()" style="font-size:15px">Decision tree</button>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<button type="button" onclick = "renderByGroup4()" style="font-size:30px">Random forest</button>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<button type="button" onclick = "renderByGroup6()" style="font-size:15px">SVM</button>
+	<button type="button" onclick = "renderByGroup5()" style="font-size:30px">Decision tree</button>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<button type="button" onclick = "renderByGroup6()" style="font-size:30px">SVM</button>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	</div>
+<p id="tox" style="font-size:30px">toxic</p>
+<p id="sevtox" style="font-size:30px">severe toxic</p>
+<p id="obs" style="font-size:30px">obscene</p>
+<p id="threat" style="font-size:30px">threat</p>
+<p id="insult" style="font-size:30px">insult</p>
+<p id="hate" style="font-size:30px">identity hate</p>
 </body>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
