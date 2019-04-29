@@ -199,7 +199,7 @@
 				lst.includes("shit") || lst.includes("motherfucking") || lst.includes("fucking") || lst.includes("bitch") ||
 				lst.includes("motherfucker") || lst.includes("goddamn") ||
 				lst.includes("bastard")) {
-				if (getNots(lst) % 2 == 1) display = "Toxic";
+				if (getNots(lst) % 2 == 0) display = "Toxic";
 			}
 
 			document.getElementById("demo").innerHTML = display;
