@@ -57,52 +57,6 @@
 		text {
 			font: 15px arial;
 		}
-
-		button {
-			color: #000;
-			background-color: #fed;
-			border: 1px solid;
-		}
-
-		[id=tox] {
-			position: absolute;
-			top: 5025px;
-			left: 1180px;
-		}
-
-		[id=sevtox] {
-			position: absolute;
-			top: 5025px;
-			left: 2300px;
-		}
-
-		[id=obs] {
-			position: absolute;
-			top: 5500px;
-			left: 2550px;
-		}
-
-		[id=threat] {
-			position: absolute;
-			top: 5975px;
-			left: 2300px;
-		}
-
-		[id=insult] {
-			position: absolute;
-			top: 5975px;
-			left: 1180px;
-		}
-
-		[id=hate] {
-			position: absolute;
-			top: 5500px;
-			left: 800px;
-		}
-
-		[id=ineedspace] {
-			margin-top: 800px;
-		}
 	</style>
 
 </head>
@@ -595,19 +549,20 @@
 		RadarChart(".radarChart", data, radarChartOptions);
 	</script>
 
-	<div style="text-align: left; margin-left: 40px; margin-right: 40px; font-size: 30px"><a style = "color:black" href="/bubble.html"><u> bubble graph viz </u></a>
+	<div style="text-align: left; margin-left: 40px; margin-right: 40px; font-size: 30px"><a style="color:black" href="/bubble.html"><u> bubble graph viz </u></a>
 		<p style="font-size: 16px">
 			Our bubble graph visualization shows frequent profanities found in each subcategory by each classifier. This offers a more qualitative look at each classifier's performance, particularly as it relates to commonalities in flagged
-		comments. The nodes are sized proportionally to word prominence relative to other words in the subcategory. Classifiers like Naive Bayes and Decision Tree seem to excel at classifying words in all categories of toxicity. A more stark divide
-		is perhaps seen with classifiers like Logistic Regression and SVM, which find few common profane words in the threat and identity-based hate. This possibly indicates the classifiers are less-suited for classifying these types of toxicity.
-		<br> Another observation is that words like 'fuck' and 'shit' appear in every category and don't help distinguish the groupings; rather, they help crowd out words that are likely more indicative of their categories. Taking into account
-		term frequency using tf-idf may assist in finding more significant results. </p>
+			comments. The nodes are sized proportionally to word prominence relative to other words in the subcategory. Classifiers like Naive Bayes and Decision Tree seem to excel at classifying words in all categories of toxicity. A more stark divide
+			is perhaps seen with classifiers like Logistic Regression and SVM, which find few common profane words in the threat and identity-based hate. This possibly indicates the classifiers are less-suited for classifying these types of toxicity.
+			<br> Another observation is that words like 'fuck' and 'shit' appear in every category and don't help distinguish the groupings; rather, they help crowd out words that are likely more indicative of their categories. Taking into account
+			term frequency using tf-idf may assist in finding more significant results. </p>
 	</div>
 
 	<div style="text-align: left; margin-left: 40px; margin-right: 40px; font-size: 30px"><u> future goals </u>
 		<p style="font-size: 16px">
 			<b> tf-idf with word frequency data: </b> As mentioned earlier, using tf-idf to find word importance would help eliminate common words that just crowd out the dataset.
-			<br><br> <b> measuring precision/recall: </b> To get more information on strengths/weaknesses of each classifier.</p>
+			<br><br> <b> measuring precision/recall: </b> To get more information on strengths/weaknesses of each classifier.
+			<br><br> <b> regression analysis: </b> A regression can provide a probability of a comment being toxic rather than a binary yes/no. This would require a different dataset.</p>
 	</div>
 
 </body>
