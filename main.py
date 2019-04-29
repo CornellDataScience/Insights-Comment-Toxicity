@@ -13,6 +13,12 @@ class MainHandler(webapp2.RequestHandler):
         beg_template = template_env.get_template('index.html')
         self.response.write(beg_template.render())
 
+class BubbleHandler(webapp2.RequestHandler):
+    def get(self):
+        beg_template = template_env.get_template('bubble.html')
+        self.response.write(beg_template.render())
+
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
+    ('/bubble', BubbleHandler)
 ], debug = True)

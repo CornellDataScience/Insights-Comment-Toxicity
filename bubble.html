@@ -70,7 +70,7 @@
 <p id="insult" style="font-size:30px">insult</p>
 <p id="hate" style="font-size:30px">identity hate</p>
 </body>
-<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="https://d3js.org/d3.v3.min.js"></script>
 <script>
 
 d3.selection.prototype.moveToFront = function() {
@@ -104,8 +104,8 @@ var svg = d3.select("body").append("svg")
 		.attr("width", 2000)
 		.attr("height", 2000)
 		.attr("class", "bubble");
-
-d3.json("badwords.json", function(error, json) {
+var url = "https://00e9e64bac22a0f7f45ccd1998e46787897c3bb82b42826b62-apidata.googleusercontent.com/download/storage/v1/b/insights-comment-toxicity.appspot.com/o/badwords.json?qk=AD5uMEvMk9KYVHiDn7DJtP02_SYte-EmCufHP9rZ3cSNKyMT7c_GeVnCOe5Vfg3LBy4jtI86L87DzJKvgiggHmiNYWxCbJMwcAB3CmDmJriMKnCl5Cds2GvQYI-qc45S12Sn4hvrRa-BrPiehGipwTMVCJvMSEMxf8HwQWo-tkOE8TwlY4bpEfPMgx-fvFf_XP5CbV2hqS-GFb2SdN-_s6ilUW_EDd1mZAEak267mMzLDnVeVn5mPxaziW3BJjQP8vuU3RPe471l3EE-aAjcQGysH0jF0YpTMXiX96ZVW4uenc2spVPvwpVorSY0k0psMipEZBSbu4rk4oxk9iVTcPomNUaYgMciEstB0x1Y_wn0F22u-dH2AF6xndBsFCOa5lQ5m4_ETEfwa--Hj0fJJdkOzsty6Myv70OLGFX5aU-a2SN1DNJsQ5M-56O4RQCDdEBfKOkIhWyswsu7JCODd_SbJyeHAaJLfpD5ZU0ZMVyslItk6sDFVWL8rxa8CMsZ2LxVEPp_PW-TYtBqAiHZSehGOV4ICm1JKVXRla5V2aClpSZbRVVa6CqRelZXnZDDUMPEzXH4QHuR8znVuxHm0G6ovzppK72j-5QDm_Fd_ZIdg8Ex_BZ29hvzsZ49oKBAlPZV_iLxZUsGUaRB5YdB-bRPhqjQWNfcSnucZoYfFXf3RVbr1ILlUxZdSDV24KxuOaNpmIu6WmlaIyOF5L7rDrCvhsNYhE0X0qf_yKdObmUfGCiyYNq0LBYKzk2i4u5JMawB5m_HUkcUHMNxFFUdCwCtRYx3wTFpGuu8EDbA2xuz3RjWAKjU0Jg";
+d3.json(url, function(error, json) {
 	if (error) throw error;
 
 	var as = [], bs = [], cs = [], ds = [], es = [], fs = [],
