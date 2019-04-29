@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/ >
 		<title>Comment Toxicity</title>
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
   <script>
     d3version3 = d3
@@ -63,6 +63,15 @@
 		Some need a more efficient algorithm, while others care about accuracy. Some may need to detect only the most severe comments, while
 	others desire the most toxicity-free environment possible. To address these goals, we aim to analyze seven popular text classification
 models.</p> </div>
+<div style = "text-align: left; margin-left: 40px; margin-right: 40px; font-size: 30px"><u> research </u>
+<p style = "font-size: 16px"> Aken, B., Risch, J., Krestel, R. & Loser, A., (2018). Challenges for toxic comment classification: An in-depth error analysis. Beuth University of Applied Sciences. <https://aclweb.org/anthology/W18-5105>
+ <ul style = "font-size: 16px"> <li> Used Wikipedia dataset.</li>
+	 <li> Raises concerns about out-of-vocabulary words, sentence dynamics (long-range dependencies), multi-word phrases.</li>
+ <li> Most models have shortcomings that lead to false negatives/positives with identifiable attributes (e.g. rhetorical questions, quotes of other comments) </li> </ul>
+<p style = "font-size: 16px">
+Chakrabarty, N., (2019). A machine learning approach to comment toxicity classification. Jalpaiguri Government Engineering College. <https://arxiv.org/ftp/arxiv/papers/1903/1903.06765.pdf></p>
+ <ul style = "font-size: 16px"> <li>Used Wikipedia dataset.</li>
+ <li> Applied bag-of-words using word count vectorizer; set up term-document matrix; applied tf-idf.</li> </p> </div>
 <div style = "text-align: left; margin-left: 40px; margin-right: 40px; font-size: 30px"><u> preprocessing </u>
 <p style = "font-size: 16px"> First, we standardized our data by removing the punctuation and converting everything to lowercase.
 Then, to give the best accuracy possible, we decided to turn our words into numbers with three vectorizers: CountVectorizer, HashingVectorizer,
@@ -77,9 +86,46 @@ and TfidfVectorizer. A quick run-through showed that TfidfVectorizer gave the be
 <p style = "font-size: 16px">
 <br/> </p> </div>
 		<svg width="1080" height="500" id = "svg2"></svg>
+		<div style = "text-align: left; margin-left: 40px; margin-right: 40px; font-size: 30px"><u> bar chart viz </u>
+			<p style = "font-size: 16px"> Our bar chart visualisation compares the time taken to test and train each model in relation to accuracy of performance. All of our models are within 12% of each other in terms of accuracy, but the ones that are clearly the most efficient at training are Gaussian Naive Bayes, K Nearest Neighbours, Random Forest, and Logistic Regression. In terms of testing efficiency, Gaussian Naive Bayes, Random Forest, Decision Tree, and Logistic Regression perform the best. Overall, logistic regression seems to achieve the best balance between accuracy, training efficiency, and testing efficiency.
+			<br/> </p>
+		<p style = "font-size: 16px">
+		<br/> </p> </div>
 		<div class="radarChart"></div>
 
 		<script src="scripts/radarChart.js"></script>
+		<div style = "text-align: left; margin-left: 40px; margin-right: 40px; font-size: 30px"><u> radar chart viz </u>
+			<p style = "font-size: 16px"> Our radar chart visualisation compares the accuracy of each model per category of toxicity. As you can see, the BERT classifier is the best at detecting the tox category; Gaussian Naive Bayes, decision trees, random forests are the best at detecting threats; logistic regression and K nearest neighbours are the best at detecting hate; support vector machine is the best at detecting insults; decision trees and K nearest neighbours are the best at detecting obscenity; and K nearest neighbours is the best at detecting severe toxicity. In general, most of the models perform uniformly and significantly well in regards to detecting hate and threats, and do far more poorly on detecting obscenity and toxicity.
+			<br/> </p></div>
+		<p style = "font-size: 16px"> </p>
+		<p style = "text-align: left; margin-left: 40px; margin-right: 40px; font-size: 30px"><u> markov chain generator </u> <br/>
+		<iframe src="https://player.vimeo.com/video/333030994" width="640" height="480" frameborder="0" allow="autoplay; fullscreen" allowfullscreen align = "center" ></iframe></p>
+		<p style = "text-align: left; margin-left: 40px; margin-right: 40px; font-size: 30px">
+			<u> comment detection</u> <br/><input id = "myText" type="text" name="lname">
+	  <input type="submit" value="Submit" onclick = "commentTox()"></p>
+		<strong><p style = "font-size: 40px" id="demo"></p></strong>
+		<script>
+		function getNots(lst){
+			var count = 0;
+			for (var i=0; i<lst.length; i++){
+				if (lst[i] = "not")
+					count++;
+			}
+			return count;
+		}
+		function commentTox() {
+			var str = document.getElementById("myText").value;
+			var display = "Not Toxic";
+			var lst = str.split(" ");
+			if (lst.includes("hell") || lst.includes("ass") || lst.includes("fuck")
+		|| lst.includes("shit") || lst.includes("motherfucking") || lst.includes("fucking") || lst.includes("bitch")
+		|| lst.includes("motherfucker") || lst.includes("goddamn")
+		|| lst.includes("bastard")){
+			if (getNots(lst)%2 == 1) display = "Toxic";
+		}
+
+		document.getElementById("demo").innerHTML = display;}
+		</script>
 
 <script>
 
@@ -196,7 +242,7 @@ g.append('g')
   .style('transform', 'rotate(-90deg)')
   .attr('font-weight', 'bold')
   .attr('text-anchor', 'end')
-  .text('Time (s)');
+  .text('Time (s) / Accuracy (%)');
 
 const legend = g.append('g')
    .attr('font-family', 'sans-serif')
@@ -279,7 +325,7 @@ legend.append('text')
 
 			];
 	var color = d3version3.scale.ordinal()
-		.range(["#EDC951","#CC333F","#00A0B0", "#fff1c4","#f98b95","#aff8ff"]);
+		.range(["#EDC951","#CC333F","#00A0B0", "#FF7F0E","#f98b95","#aff8ff"]);
 
 	var radarChartOptions = {
 		w: width,

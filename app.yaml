@@ -16,4 +16,9 @@ skip_files:
 - ^train.csv
 - ^test.csv
 - ^tox.csv
+- ^test.txt
+- ^test2.txt
+- ^poster.pdf
+- ^poster.ppt
 - ^sample_submission.csv
+- ^.git/objects/pack/pack-0a1f6f1743ffd9387d90261e979c6440a688fb6d.pack
